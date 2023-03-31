@@ -1,30 +1,30 @@
 
 const customError = require('../utils/customError');
 const asyncHandler = require('../middlewares/async');
-const User = require('../models/User');
-
+const User = require('../models/user');
+const Post = require('../models/post');
+const {getPosts} = require('./post');
 // @desc      Get all users
 // @route     GET /api/v1/users
 // @access    Private/Admin
 exports.getUsers = asyncHandler(async (req, res, next) => {
   const user = await User.find();
-
   res.status(200).json({
     success: true,
     data: user
   });});
 
-// @desc      Get single user
+// @desc      Get single user with posts
 // @route     GET /api/v1/users/:id
 // @access    Private/Admin
 exports.getUser = asyncHandler(async (req, res, next) => {
   const user = await User.findById(req.params.id);
-
+  res.write(user)
+  const posts_for_that_user = getPosts();
+  res.send(posts_for_that_user)
   res.status(200).json({
-    success: true,
-    data: user
-  });
-});
+    success: true
+  });});
 
 // @desc      Create user
 // @route     POST /api/v1/users
