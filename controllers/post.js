@@ -1,8 +1,8 @@
 
 const customError = require('../utils/customError');
 const asyncHandler = require('../middlewares/async');
-const Post = require('../models/Post');
-const User = require('../models/User');
+const Post = require('../models/post');
+const User = require('../models/user');
 // @desc      Get posts
 // @route     GET /api/v1/posts
 // @route     GET /api/v1/posts

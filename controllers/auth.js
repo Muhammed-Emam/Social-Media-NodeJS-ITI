@@ -6,7 +6,7 @@ const {promisify} = require('util');
 const {protect, authorize} = require('../middlewares/auth');
 const signJwt = promisify(jwt.sign);
 const {jwtSecret} = require('../config/config.env')
-const ErrorResponse = require('../utils/customError');
+const customError = require('../utils/customError');
 const asyncHandler = require('../middlewares/async');
 
 //checking all fields are entered
